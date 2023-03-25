@@ -1,0 +1,12 @@
+[ui]
+cheatsenabled=Cheats Enabled
+cheatsenabledtip=When checked, stats and achievements will be locked
+
+[command]
+aliasexists=Alias with name "<name>" already exists
+aliasset=Successfully set alias with name "<name>"
+deletedalias=Successfully deleted alias with name "<name>"
+noaliases=No aliases set
+noalias=Alias with name "<name>" does not exist
+missingarg=Missing <arg>
+runningalias=Running alias with name "<name>"
