@@ -1,15 +1,15 @@
 package commandUtils;
 
-import java.io.File;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
 import necesse.engine.GlobalData;
 import necesse.engine.commands.CommandLog;
 import necesse.engine.localization.message.LocalMessage;
 import necesse.engine.network.client.Client;
 import necesse.engine.save.LoadData;
 import necesse.engine.save.SaveData;
+
+import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 
 public class AliasUtils {
     private static final File cfgFile = new File(GlobalData.cfgPath() + "snoobinoob.aliases.cfg");
@@ -50,8 +50,7 @@ public class AliasUtils {
     }
 
     private Alias getAlias(String name) {
-        Optional<Alias> alias = aliases.stream().filter(a -> a.name.equals(name)).findFirst();
-        return alias.isPresent() ? alias.get() : null;
+        return aliases.stream().filter(a -> a.name.equals(name)).findFirst().orElse(null);
     }
 
     public void getAliases(String name, CommandLog log) {

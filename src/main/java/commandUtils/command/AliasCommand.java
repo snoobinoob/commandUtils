@@ -15,15 +15,14 @@ public class AliasCommand extends ModularChatCommand {
 
     public AliasCommand() {
         super("alias", "Aliases for long commands", PermissionLevel.USER, false,
-                new CmdParameter("get/set/run/delete",
-                        new PresetStringParameterHandler("get", "set", "run", "delete")),
-                new CmdParameter("name", new AliasNameParameterHandler(), true,
-                        new CmdParameter("value", new StringParameterHandler(), true)));
+            new CmdParameter("get/set/run/delete",
+                new PresetStringParameterHandler("get", "set", "run", "delete")),
+            new CmdParameter("name", new AliasNameParameterHandler(), true,
+                new CmdParameter("value", new StringParameterHandler(), true)));
     }
 
     @Override
-    public void runModular(Client client, Server server, ServerClient serverClient, Object[] args,
-            String[] errors, CommandLog log) {
+    public void runModular(Client client, Server server, ServerClient serverClient, Object[] args, String[] errors, CommandLog log) {
         String op = (String) args[0];
         String name = (String) args[1];
         String value = (String) args[2];

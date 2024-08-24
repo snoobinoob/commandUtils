@@ -1,20 +1,21 @@
 package commandUtils.patch;
 
-import java.awt.Rectangle;
 import commandUtils.form.CheatsEnabledCheckBox;
 import necesse.engine.modLoader.annotations.ModConstructorPatch;
+import necesse.gfx.forms.ButtonOptions;
 import necesse.gfx.forms.components.FormComponent;
 import necesse.gfx.forms.components.FormContentBox;
 import necesse.gfx.forms.position.FormPositionContainer;
-import necesse.gfx.forms.presets.NewSaveForm;
+import necesse.gfx.forms.presets.NewSaveWorldSettingsForm;
 import net.bytebuddy.asm.Advice;
 
+import java.awt.*;
+
 public class NewSaveFormPatch {
-    @ModConstructorPatch(target = NewSaveForm.class, arguments = {String.class})
+    @ModConstructorPatch(target = NewSaveWorldSettingsForm.class, arguments = {ButtonOptions.class, ButtonOptions.class})
     public static class ConstructorPatch {
         @Advice.OnMethodExit
-        public static void onExit(
-                @Advice.FieldValue("settingsContent") FormContentBox settingsContent) {
+        public static void onExit(@Advice.FieldValue("settingsContent") FormContentBox settingsContent) {
             for (FormComponent comp : settingsContent.getComponents()) {
                 if (comp instanceof FormPositionContainer) {
                     FormPositionContainer c = (FormPositionContainer) comp;
@@ -28,8 +29,9 @@ public class NewSaveFormPatch {
             settingsContent.setContentBox(contentBox);
 
             CheatsEnabledCheckBox cheatsBox = settingsContent
-                    .addComponent(new CheatsEnabledCheckBox(settingsContent.getWidth() - 20));
-            cheatsBox.setPositionXCentered(settingsContent.getWidth(), 80);
+                .addComponent(new CheatsEnabledCheckBox(settingsContent.getWidth() - 20));
+            cheatsBox.useButtonTexture();
+            cheatsBox.setPositionXCentered(settingsContent.getWidth(), 70);
         }
     }
 }

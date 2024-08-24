@@ -1,12 +1,13 @@
 package commandUtils;
 
-import java.util.Arrays;
 import necesse.engine.commands.ParsedCommand;
-import necesse.engine.control.Control;
+import necesse.engine.input.Control;
 import necesse.engine.localization.message.StaticMessage;
 import necesse.engine.network.client.Client;
 import necesse.engine.network.packet.PacketChatMessage;
 import necesse.engine.save.LoadData;
+
+import java.util.Arrays;
 
 public class Alias {
     public final String name;
